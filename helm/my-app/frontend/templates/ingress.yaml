@@ -7,8 +7,10 @@ metadata:
     {{ $key }}: {{ $value | quote }}
     {{- end }}
 spec:
+  ingressClassName: webapprouting.kubernetes.azure.com
   rules:
-    - http:
+    - host: {{ .Values.appName }}-{{ .Values.environment }}.k8s-tests2.tst
+      http:
         paths:
           - path: /
             pathType: Prefix
